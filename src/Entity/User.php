@@ -36,6 +36,8 @@ class User implements UserInterface
      */
     private $password;
 
+    private $confirmPassword;
+
     /**
      * @ORM\Column(type="string", length=255)
      */
@@ -252,6 +254,26 @@ class User implements UserInterface
                 $product->setAuthor(null);
             }
         }
+
+        return $this;
+    }
+
+    /**
+     * Get the value of confirmPassword
+     */
+    public function getConfirmPassword()
+    {
+        return $this->confirmPassword;
+    }
+
+    /**
+     * Set the value of confirmPassword
+     *
+     * @return  self
+     */
+    public function setConfirmPassword($confirmPassword)
+    {
+        $this->confirmPassword = $confirmPassword;
 
         return $this;
     }
