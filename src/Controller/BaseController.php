@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Image;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * Class BaseController.
@@ -60,6 +61,23 @@ class BaseController extends AbstractController
         } catch (\Exception $e) {
             return false;
         }
+    }
+
+    /**
+     * Upload profile picture.
+     *
+     * @param File $file
+     * @param object $object
+     * 
+     * @return object
+     */
+    public function uploadProfilePicture(File $file, object $object): object
+    {
+        $filename = bin2hex(random_bytes(6)) . '.' . $file->guessExtension();
+        $file->move($this->getParameter('image_directory'), $filename);
+        $object->setImage($filename);
+
+        return $object;
     }
 
     /**
