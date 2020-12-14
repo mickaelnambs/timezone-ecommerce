@@ -28,7 +28,7 @@
 									<a href="{{ path('app_home') }}">Home</a>
 								</li>
 								<li>
-									<a href="shop.html">shop</a>
+									<a href="{{ path('product_index') }}">shop</a>
 								</li>
 								<li>
 									<a href="about.html">about</a>
@@ -98,15 +98,19 @@
 										<span class="flaticon-user"></span>
 									</a>
 								</li>
-								<li>
-									<a href="cart.html">
-										<span class="flaticon-shopping-cart"></span>
-									</a>
-								</li>
 							</ul>
 						{% else %}
 							<ul>
-								<li><a href="{{ path('account_logout') }}"><span class="fa fa-power-off"></span></a></li>
+								<li>
+									<a href="{{ path('account_logout') }}">
+										<span class="fa fa-power-off"></span>
+									</a>
+								</li>
+								{# <li>
+																	<a href="cart.html">
+																		<span class="flaticon-shopping-cart"></span>
+																	</a>
+																</li> #}
 							</ul>
 
 						{% endif %}

@@ -1,0 +1,57 @@
+{% extends "admin/base.html.twig" %}
+{% block title %}Nos Produits
+{% endblock %}
+{% block body %}
+	<div class="container-fluid">
+		<h2 class="text-center">Gestion des produits
+			<span>
+				<a href="{{ path('admin_product_new') }}" class="genric-btn primary">
+					<i class="fa fa-plus"></i>
+				</a>
+			</span>
+		</h2>
+		<table class="table table-hover table-bordered">
+			<thead>
+				<tr class="text-center">
+					<th></th>
+					<th>Catégorie</th>
+					<th>Marque</th>
+					<th>Prix</th>
+					<th>Proprio</th>
+					<th>Date</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for product in products %}
+					<tr class="text-center">
+						{% for product in product.images %}
+							<td>
+								<img src="{{asset('uploads/' ~ product.name)}}" alt="" width="40px" height="40px">
+							</td>
+						{% endfor %}
+						<td>{{product.category.title}}</td>
+						<td>{{ product.mark }}</td>
+						<td>{{ product.price | number_format(0, '', ' ') }}
+							Ar</td>
+						<td>
+							<img src="{{asset('uploads/' ~ product.author.image)}}" class="avatar-mini">
+						</td>
+						<td>{{ product.createdAt | date('d/m/Y à H:i') }}</td>
+						<td>
+							<a href="{{ path('admin_product_edit', {'id': product.id}) }}" class="genric-btn success">
+
+								<i class="fa fa-edit"></i>
+							</a>
+							<a href="{{ path('admin_product_delete', {'id': product.id}) }}" data-delete class="genric-btn danger">
+
+								<i class="fa fa-trash"></i>
+							</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		{# {{ pagination.display() }} #}
+	</div>
+{% endblock %}
