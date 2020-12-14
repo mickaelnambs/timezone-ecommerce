@@ -1,0 +1,45 @@
+{% extends "admin/base.html.twig" %}
+{% block title %}Nos Categories
+{% endblock %}
+{% block body %}
+	<div class="container-fluid">
+		{% include "admin/partials/_message.html.twig" %}
+		<h2 class="text-center">Gestion des categories
+			<span>
+				<a href="{{ path('admin_category_new') }}" class="genric-btn primary">
+					<i class="fa fa-plus"></i>
+				</a>
+			</span>
+		</h2>
+		<table class="table table-hover table-bordered mt-4">
+			<thead>
+				<tr class="text-center">
+					<th>ID</th>
+					<th>Categorie</th>
+					<th>Date</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for category in categories %}
+					<tr class="text-center">
+						<td>{{ category.id }}</td>
+						<td>{{ category.title }}</td>
+						<td>{{ category.createdAt | date('d/m/Y à H:i') }}</td>
+						<td>
+							<a href="{{ path('admin_category_edit', {'id': category.id}) }}" class="genric-btn success">
+
+								<i class="fa fa-edit"></i>
+							</a>
+							<a href="{{ path('admin_category_delete', {'id': category.id}) }}" data-delete class="genric-btn danger">
+
+								<i class="fa fa-trash"></i>
+							</a>
+						</td>
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+		{# {{ pagination.display() }} #}
+	</div>
+{% endblock %}

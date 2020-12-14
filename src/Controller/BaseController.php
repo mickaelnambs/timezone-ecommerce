@@ -28,8 +28,9 @@ class BaseController extends AbstractController
     }
 
     /**
+     *
      * @param object $object
-     * @return boolean
+     * @return bool
      */
     public function save(object $object): bool
     {
@@ -47,7 +48,7 @@ class BaseController extends AbstractController
 
     /**
      * @param object $object
-     * @return boolean
+     * @return bool
      */
     public function remove(object $object): bool
     {

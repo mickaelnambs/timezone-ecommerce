@@ -7,7 +7,7 @@
 		<div class="row">
 			<div class="col">
 				<div class="alert alert-light">
-					<h2 class="alert-heading">Informations générales</h2>
+					<h2 class="alert-heading">Generals informations</h2>
 					<hr>
 					{{ form_row(form.mark) }}
 					{{ form_row(form.price) }}
@@ -17,12 +17,14 @@
 			</div>
 			<div class="col">
 				<div class="alert alert-light">
-					<h2 class="alert-heading">Détails</h2>
+					<h2 class="alert-heading">Details</h2>
 					<hr>
+					{{ form_row(form.color) }}
 					{{ form_row(form.description) }}
 
 					<hr>
-					<button type="submit" class="btn btn-success">
+					<button type="submit" class="genric-btn primary">
+
 						<i class="fa fa-check"></i>
 						Sauvegarder
 					</button>

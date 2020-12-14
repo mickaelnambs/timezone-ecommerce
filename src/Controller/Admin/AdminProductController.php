@@ -74,7 +74,7 @@ class AdminProductController extends BaseController
             if ($this->save($product)) {
                 $this->addFlash(
                     MessageConstant::SUCCESS_TYPE,
-                    "Le produit a bien été enregistré"
+                    "Le produit {$product->getMark()} a bien été enregistré"
                 );
                 return $this->redirectToRoute('admin_product_index');
             }
@@ -110,7 +110,7 @@ class AdminProductController extends BaseController
             if ($this->save($product)) {
                 $this->addFlash(
                     MessageConstant::SUCCESS_TYPE,
-                    "Le produit a bien été modifié"
+                    "Le produit {$product->getMark()} a bien été modifié"
                 );
                 return $this->redirectToRoute('admin_product_index');
             }
@@ -134,7 +134,7 @@ class AdminProductController extends BaseController
         if ($this->remove($product)) {
             $this->addFlash(
                 MessageConstant::SUCCESS_TYPE,
-                "Le produit a bien été supprimé"
+                "Le produit {$product->getMark()} a bien été supprimé"
             );
         }
         return $this->redirectToRoute('admin_product_index');

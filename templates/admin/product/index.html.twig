@@ -3,6 +3,7 @@
 {% endblock %}
 {% block body %}
 	<div class="container-fluid">
+		{% include "admin/partials/_message.html.twig" %}
 		<h2 class="text-center">Gestion des produits
 			<span>
 				<a href="{{ path('admin_product_new') }}" class="genric-btn primary">
@@ -10,11 +11,11 @@
 				</a>
 			</span>
 		</h2>
-		<table class="table table-hover table-bordered">
+		<table class="table table-hover table-bordered mt-4">
 			<thead>
 				<tr class="text-center">
-					<th></th>
-					<th>Catégorie</th>
+					<th>ID</th>
+					<th>Categorie</th>
 					<th>Marque</th>
 					<th>Prix</th>
 					<th>Proprio</th>
@@ -25,6 +26,7 @@
 			<tbody>
 				{% for product in products %}
 					<tr class="text-center">
+						<td>{{ product.id }}</td>
 						{% for product in product.images %}
 							<td>
 								<img src="{{asset('uploads/' ~ product.name)}}" alt="" width="40px" height="40px">

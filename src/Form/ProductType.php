@@ -29,11 +29,12 @@ class ProductType extends ApplicationType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('mark', TextType::class, $this->getConfiguration("Marque", "La marque ..."))
-            ->add('description', TextareaType::class, $this->getConfiguration("Description", "La description ..."))
+            ->add('mark', TextType::class, $this->getConfiguration("Marque", "La marque du produit ..."))
+            ->add('description', TextareaType::class, $this->getConfiguration("Description", "La description du produit ..."))
+            ->add('color', TextType::class, $this->getConfiguration("Couleur", "La couleur du produit ..."))
             ->add('category', EntityType::class, $this->getConfiguration("Categorie", false, ['class' => Category::class, 'choice_label' => 'title']))
             ->add('price', IntegerType::class, $this->getConfiguration("Prix", "Le prix du produit ..."))
-            ->add('images', FileType::class, $this->getConfiguration("Photos", "Les photos ...", ['mapped' => false, 'multiple' => true, 'required' => false]))
+            ->add('images', FileType::class, $this->getConfiguration("Photos", "Les photos du produit ...", ['mapped' => false, 'multiple' => true, 'required' => false]))
             ->addEventListener(FormEvents::SUBMIT, function (FormEvent $event) {
                 /** @var Product */
                 $product = $event->getData();
